@@ -5,7 +5,11 @@ using OpenQA.Selenium.Chrome;
 namespace Eapp
 {
     public class Tests
+
     {
+        //open the browser
+        //instantiation of driver
+        IWebDriver driver = new ChromeDriver();
         //hooks in nunit
         [SetUp]
         public void Setup()
@@ -16,13 +20,17 @@ namespace Eapp
         [Test]
         public void Test1()
         {
-            //open the browser
-            //instantiation of driver
-            IWebDriver driver = new ChromeDriver();
+            
             //navigate to site
             driver.Navigate().GoToUrl("http://eaapp.somee.com/Account/Login");
             driver.Manage().Window.Maximize();
             Assert.Pass();
+        }
+
+        [TearDown]
+        public void Close()
+        {
+            driver.Quit();
         }
     }
 }
